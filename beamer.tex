@@ -1,0 +1,92 @@
+%& -job-name=beamer
+
+\documentclass[11pt]{\jobname}
+
+\makeatletter
+\@ifclassloaded{beamer}{
+	
+	\usetheme{Singapore}
+	\usecolortheme{rose}
+	\setbeamercovered{transparent}
+	
+	\hypersetup{pdfpagemode=FullScreen}
+	
+	\setbeamercolor{alerted text}{fg=blue}
+	
+	\setbeamertemplate{caption}[numbered]
+	\setbeamertemplate{footline}[text line]{\begin{tabularx}{\linewidth}{XYZ}\newblock{\insertshortauthor} & \newblock{\insertshorttitle} & \newblock{\insertframenumber/\inserttotalframenumber}\\\end{tabularx}}
+	\setbeamertemplate{navigation symbols}{}
+	
+}{
+	
+	\let\savednewcommand\newcommand
+	\let\newcommand\renewcommand
+	\input{size12.clo}
+	\let\newcommand\savednewcommand
+	
+	\usepackage{beamerarticle}
+	\usepackage{fancyhdr}
+	\usepackage{geometry}
+	\usepackage{titling}
+	
+	\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+	\lhead{\theauthor}
+	\chead{\thetitle}
+	\rhead{\thepage}
+	\cfoot{}
+	\pagestyle{fancy}
+
+	\setlength\parindent{0pt}
+
+	\renewcommand{\titlepage}{\maketitle}
+	\renewcommand\@biblabel[1]{}
+
+}
+\makeatother
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}
+\usepackage{tabularx}
+\usepackage{times}
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{Z}{>{\raggedleft\arraybackslash}X}
+
+\title{Title}
+\subtitle{Subtitle}
+\author{Author}
+\institute{Institute}
+\day=1\month=1\year=1970
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{Lipsum}
+
+\begin{frame}
+\frametitle{Lorem ipsum}
+\lipsum[1]
+\end{frame}
+
+\begin{frame}[fragile]
+\only<presentation>{\frametitle{References}}
+\newcommand{\bibi}[3]{\bibitem{}#1\newblock {\em #2}
+\newblock #3}
+\begin{thebibliography}{100}
+\beamertemplatearticlebibitems
+\bibi{Author}{Title}{journal, year, etc.}
+\end{thebibliography}
+\end{frame}
+
+\end{document}
