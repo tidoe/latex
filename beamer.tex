@@ -7,6 +7,7 @@
 	
 	\usetheme{Singapore}
 	\usecolortheme{rose}
+	\useoutertheme[subsection=false]{miniframes}
 	\setbeamercovered{transparent}
 	
 	\hypersetup{pdfpagemode=FullScreen}
@@ -16,6 +17,8 @@
 	\setbeamertemplate{caption}[numbered]
 	\setbeamertemplate{footline}[text line]{\begin{tabularx}{\linewidth}{XYZ}\newblock{\insertshortauthor} & \newblock{\insertshorttitle} & \newblock{\insertframenumber/\inserttotalframenumber}\\\end{tabularx}}
 	\setbeamertemplate{navigation symbols}{}
+	
+	\AtBeginSection{\subsection{}\begin{frame}\tableofcontents[currentsection, subsectionstyle=show/show/hide]\end{frame}}
 	
 }{
 	
